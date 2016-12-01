@@ -14,7 +14,7 @@ def handleDirectionChange(position, orientation, direction)
         end
     end
 
-    value = direction[-1].to_i
+    value = direction[1..-1].to_i
     if orientation.eql?(0)
         position[1] += value
     elsif orientation.eql?(1)
@@ -39,5 +39,4 @@ directions.each do |direction|
    position, orientation = handleDirectionChange(position, orientation, direction) 
 end
 
-puts position
-puts orientation
+puts (position[0].abs + position[1].abs) 
