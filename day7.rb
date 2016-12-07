@@ -1,7 +1,8 @@
 contents = File.read('day7.txt').strip
 
 def isAbba(string)
-    (0..string.length - 1).step(4) do |n|
+    (0).upto(string.length - 1) do |n|
+        break if string.length == n+3
         if string[n] == string[n+1]
         elsif string[n] == string[n+3] and string[n+1] == string[n+2]
             return true, string[n..n+3]
@@ -45,5 +46,3 @@ contents.each_line do |line|
 end
 
 puts validIps
-
-# 38 too low
