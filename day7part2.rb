@@ -24,12 +24,16 @@ def isAba(string)
 end
 
 def isBab(hypernet, aba)
-    temp = hypernet[1] + hypernet[0] + hypernet[1]
-    aba.each do |value|
-        if temp == value
-            return true
+    (0).upto(hypernet.length - 1) do |n|
+        break if hypernet.length == n+2
+        temp = hypernet[n+1] + hypernet[n] + hypernet[n+1]
+        aba.each do |value|
+            if temp == value
+                return true
+            end
         end
     end
+    
     return false
 end
 
@@ -63,3 +67,4 @@ end
 puts validIps
 
 # 19 = too low
+# 364 = too high
