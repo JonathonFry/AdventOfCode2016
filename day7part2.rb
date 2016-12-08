@@ -26,9 +26,14 @@ end
 def isBab(hypernet, aba)
     (0).upto(hypernet.length - 1) do |n|
         break if hypernet.length == n+2
-        temp = hypernet[n+1] + hypernet[n] + hypernet[n+1]
+        temp = ""
+        if hypernet[n] == hypernet[n+2]
+            temp = hypernet[n+1] + hypernet[n] + hypernet[n+1]
+        end
+
         aba.each do |value|
             if temp == value
+                puts ("#{temp}, #{value}, #{hypernet}")
                 return true
             end
         end
@@ -47,6 +52,7 @@ contents.each_line do |line|
     ips.each do |ip|
             isAba, value = isAba(ip)
             if isAba
+                puts value
                 hypernet.each do |hyper|
                     isBab = isBab(hyper.join("").to_s, value)
                     if isBab
@@ -59,7 +65,6 @@ contents.each_line do |line|
         end
     
     if valid
-        puts ("#{line}")
         validIps += 1
     end
 end
